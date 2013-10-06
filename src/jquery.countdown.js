@@ -6,67 +6,67 @@
  * Version: 1.0
  */
 (function ( $ ) {
-    $.fn.countdown = function( interval, callback, format ) {
-        if (typeof(interval)=="undefined") {
-            interval = {'h':0,'m':0,'s':0};
-        }
-        if (typeof(callback)=="undefined") {
-			callback = {
-				onTick: function(e) {
+    $.fn.countdown = function( settings ) {
+		
+		if (typeof(settings) == "undefined") {
+			settings = {
+				interval : {hour:0,minute:0,second:0},
+				callback : {
+					onTick: function(e) {
+					},
+					onEnd: function(e) {
+					}
 				},
-				onEnd: function(e) {
-				}
+				format : ["%h hour(s), %m minute(s) and %s second(s)","%m minute(s) and %s second(s)","%s second(s)"]
 			};
 		}
-        if (typeof(format)=="undefined") {
-            format = ["%h hour(s), %m minute(s) and %s second(s)","%m minute(s) and %s second(s)","%s second(s)"];
-        }
+
         var that = this;
         (function tick(){
-			if (callback.onTick) {
-				callback.onTick.call(interval);
+			if (settings.callback.onTick) {
+				settings.callback.onTick.call(interval);
 			}
-            if (interval.h == 0 && interval.m == 0 && interval.s == 0) {
-				if (callback.onEnd) {
-					callback.onEnd.call(interval);
+            if (settings.interval.hour == 0 && settings.interval.minute == 0 && settings.interval.second == 0) {
+				if (settings.callback.onEnd) {
+					settings.callback.onEnd.call(interval);
 				}
                 return;
             }
-            if (interval.s == 0) {
-                if (interval.m > 0) {
-                    interval.m--;
+            if (settings.interval.second == 0) {
+                if (settings.interval.minute > 0) {
+                    settings.interval.minute--;
                 }
-                interval.s = 60;
+                settings.interval.second = 60;
             }
-            if (interval.m == 0) {
-                if (interval.h > 0) {
-                    interval.h--;
-                    if (interval.h == 0) {
-                        interval.m = 59;
+            if (settings.interval.minute == 0) {
+                if (settings.interval.hour > 0) {
+                    settings.interval.hour--;
+                    if (settings.interval.hour == 0) {
+                        settings.interval.minute = 59;
                     }
                 }
             }
             
-            interval.s--;
+            settings.interval.second--;
             setTimeout(tick, 1000);
             
-            var hs = "00" + interval.h;
+            var hs = "00" + settings.interval.hour;
                 hs = hs.substr(hs.length-2);
-            var ms = "00" + interval.m;
+            var ms = "00" + settings.interval.minute;
                 ms = ms.substr(ms.length-2);
-            var ss = "00" + interval.s;
+            var ss = "00" + settings.interval.second;
                 ss = ss.substr(ss.length-2);
             
             var time_str = '';
-            if (interval.h > 0) {
+            if (settings.interval.hour > 0) {
                 if (format.length) {
                     time_str = format[0].replace(/%h/g,hs).replace(/%m/g,ms).replace(/%s/g,ss);
                 }
-            } else if(interval.h == 0 && interval.m > 0) {
+            } else if(settings.interval.hour == 0 && settings.interval.minute > 0) {
                 if (format.length > 1) {
                     time_str = format[1].replace(/%m/g,ms).replace(/%s/g,ss);
                 }
-            } else if(interval.h == 0 && interval.m == 0) {
+            } else if(settings.interval.hour == 0 && settings.interval.minute == 0) {
                 if (format.length > 2) {
                     time_str = format[2].replace(/%s/g,ss);
                 }
