@@ -6,10 +6,9 @@
  * Version: 1.0
  */
 (function ( $ ) {
-    $.fn.countdown = function( settings ) {
+    $.fn.countdown = function( options ) {
 		
-		if (typeof(settings) == "undefined") {
-			settings = {
+		var settings = $.extend({
 				interval : {hour:0,minute:0,second:0},
 				callback : {
 					onTick: function(e) {
@@ -18,9 +17,8 @@
 					}
 				},
 				format : ["%h hour(s), %m minute(s) and %s second(s)","%m minute(s) and %s second(s)","%s second(s)"]
-			};
-		}
-
+        }, options );
+		
         var that = this;
         (function tick(){
 			if (settings.callback.onTick) {
@@ -59,16 +57,16 @@
             
             var time_str = '';
             if (settings.interval.hour > 0) {
-                if (format.length) {
-                    time_str = format[0].replace(/%h/g,hs).replace(/%m/g,ms).replace(/%s/g,ss);
+                if (settings.format.length) {
+                    time_str = settings.format[0].replace(/%h/g,hs).replace(/%m/g,ms).replace(/%s/g,ss);
                 }
             } else if(settings.interval.hour == 0 && settings.interval.minute > 0) {
-                if (format.length > 1) {
-                    time_str = format[1].replace(/%m/g,ms).replace(/%s/g,ss);
+                if (settings.format.length > 1) {
+                    time_str = settings.format[1].replace(/%m/g,ms).replace(/%s/g,ss);
                 }
             } else if(settings.interval.hour == 0 && settings.interval.minute == 0) {
-                if (format.length > 2) {
-                    time_str = format[2].replace(/%s/g,ss);
+                if (settings.format.length > 2) {
+                    time_str = settings.format[2].replace(/%s/g,ss);
                 }
             } else {
                 time_str = '';
