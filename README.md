@@ -13,7 +13,7 @@ $('.countdown').countdown({
 		second : 59
 	},
 	callback  : {
-		onEnd : function {
+		onEnd : function(e) {
 			window.location.reload();
 		}
 	}
