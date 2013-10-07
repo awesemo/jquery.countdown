@@ -6,7 +6,10 @@ jQuery Countdown Timer
 Usage:
 -----------------------
 
+
+
 $('.countdown').countdown({
+
 	interval : {
 		hour   : 1,
 		minute : 30,
@@ -18,3 +21,5 @@ $('.countdown').countdown({
 		}
 	}
 });
+	
+
