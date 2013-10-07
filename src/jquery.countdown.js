@@ -24,11 +24,11 @@
         var that = this;
         (function tick(){
 			if (settings.callback.onTick) {
-				settings.callback.onTick.call(interval);
+				settings.callback.onTick.call(settings.interval);
 			}
             if (settings.interval.hour == 0 && settings.interval.minute == 0 && settings.interval.second == 0) {
 				if (settings.callback.onEnd) {
-					settings.callback.onEnd.call(interval);
+					settings.callback.onEnd.call(settings.interval);
 				}
                 return;
             }
