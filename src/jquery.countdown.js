@@ -3,6 +3,8 @@
  *
  * Licensed under the MIT License (LICENSE.txt).
  * 
+ * https://github.com/awesemo/jquery.countdown
+ * 
  * Version: 1.0
  */
 (function ( $ ) {
