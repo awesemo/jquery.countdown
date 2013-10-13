@@ -18,5 +18,9 @@ $('.countdown').countdown({
 		}
 	}
 });
+
+Demo:
+-----------------------
+http://jsfiddle.net/YrxLQ/2/
 	
 
