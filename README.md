@@ -23,5 +23,9 @@ $('.countdown').countdown({
 Demo:
 -----------------------
 [Fiddler Demo](http://jsfiddle.net/YrxLQ/2/ "Sample Fiddler")
+
+Custom Formatting
+[Fiddler Demo](http://jsfiddle.net/Cn2BL/ "Sample Fiddler")
+
 	
 
