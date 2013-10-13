@@ -21,6 +21,6 @@ $('.countdown').countdown({
 
 Demo:
 -----------------------
-http://jsfiddle.net/YrxLQ/2/
+[Fiddler Demo](http://jsfiddle.net/YrxLQ/2/ "Sample Fiddler")
 	
 
