@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>jQuery Countdown</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="src/jquery.countdown.js"></script>
+  </head>
+  <body>
+	<div id="countdown"></div>
+	<div id="callback"></div>
+	<script type="text/javascript">
+		$('#countdown').countdown({
+			interval : {
+				hour   : 0,
+				minute : 1,
+				second : 5
+			},
+			format    : ["%h hour(s), %m minute(s) and %s second(s)","%m minute(s) and %s second(s)","%s second(s)"],
+			callback  : {
+				onEnd : function(e) {
+					alert('Time is Up!');
+					window.location.reload();
+				},
+				onTick: function(e) {
+					$('#callback').html(e.hour+":"+e.minute+":"+e.second);
+				}
+			}
+		});
+	</script>
+  </body>
+</html>
