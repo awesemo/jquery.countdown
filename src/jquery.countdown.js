@@ -24,7 +24,7 @@
         var that     = this;
         var time_str = '';
         
-        var timeLeft = (settings.interval.hour * 3600) + (settings.interval.minute * 60) + settings.interval.second;
+        var timeLeft = (parseInt(settings.interval.hour) * 3600) + (parseInt(settings.interval.minute) * 60) + parseInt(settings.interval.second);
         
         (function tick(){
 			var remHours   = 0;
@@ -44,7 +44,7 @@
 				remSeconds = offset;
 				
 				hs = "00" + remHours;
-				hs = hs.substr(hs.length-2);
+				hs = hs.substr(hs.length-(remHours.toString().length > 2 ? remHours.toString().length : 2));
 				ms = "00" + remMinutes;
 				ms = ms.substr(ms.length-2);
 				ss = "00" + remSeconds;
