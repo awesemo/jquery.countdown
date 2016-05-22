@@ -1,7 +1,7 @@
 jquery.countdown
 ================
 
-jQuery Countdown Timer
+A simple jQuery Countdown Timer
 
 Usage:
 -----------------------
